@@ -45,5 +45,6 @@ def callback(msg):
     csd[cid] = date
     mup = cc(now.year,now.month)
     bot.send_message(msg.chat.id, "please, choice date", reply_markup=mup)
-
+    bot.answer_callback_query(call.id, text="date is choiced")
+    
 bot.polling(none_stop=True, interval=0)
