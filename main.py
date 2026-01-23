@@ -22,7 +22,7 @@ ANSWERS = {
 }
 
 
-def create_main_keyboard():
+def cmk():
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
     keyboard.add(BUTTON_TEST1, BUTTON_TEST2, BUTTON_TEST3)
     return keyboard
@@ -34,7 +34,7 @@ def start(msg):
         bot.send_message(
             msg.chat.id,
             "Choose your question:",
-            reply_markup=create_main_keyboard()
+            reply_markup=cmk()
         )
         logger.info(f"User {msg.from_user.id} started the bot")
     except Exception as e:
@@ -42,7 +42,7 @@ def start(msg):
 
 
 @bot.message_handler(func=lambda message: True)
-def handle_message(msg):
+def hmsg(msg):
     try:
         text = msg.text
         if text in ANSWERS:
